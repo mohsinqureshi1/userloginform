@@ -178,20 +178,34 @@ const create_product=async(req,res)=>{
 
 }
 
-const get_product=async(req,res)=>{
-try {
-      const showProduct=await Productt.find({userId : req.userId});
-      res.status(200).json(showProduct);
+// const get_product=async(req,res)=>{
+// try {
+//       const showProduct=await Productt.find({userId : req.userId});
+//       res.status(200).json(showProduct);
 
-      }
+//       }
 
  
-    catch (error) {
-      console.log(error)
-     res.status(400).json({message:"error arha hai ksi chz mai"})
-    }
+//     catch (error) {
+//       console.log(error)
+//      res.status(400).json({message:"error arha hai ksi chz mai"})
+//     }
 
-}
+// }
+const get_userdetails=async(req,res)=>{
+  try {
+        const showdetails=await Form.find({userId : req.userId});
+        res.status(200).json(showdetails);
+  
+        }
+  
+   
+      catch (error) {
+        console.log(error)
+       res.status(400).json({message:"error arha hai ksi chz mai"})
+      }
+  
+  }
 
 
 
@@ -362,26 +376,26 @@ const sign_in = async (req, res) => {
 
 
 
+//isko aj he comment kia hai
 
 
+// const user_data = async (req, res,next) => {
+//   const { token } = req.body;
+//   try {
+//     const user = jwt.verify(token, secretKey);
+//     const username = user.email;
 
-const user_data = async (req, res,next) => {
-  const { token } = req.body;
-  try {
-    const user = jwt.verify(token, secretKey);
-    const username = user.email;
-
-    form.findOne({ email: username })
-      .then((login) => {
-        res.send({ status: "ok", login: login });
-      })
-      .catch((error) => {
-        res.send({ status: "error", login: error });
-      });
-  } catch (error) {
-    res.send({ status: "error", message: "Invalid token" });
-  }
-};
+//     form.findOne({ email: username })
+//       .then((login) => {
+//         res.send({ status: "ok", login: login });
+//       })
+//       .catch((error) => {
+//         res.send({ status: "error", login: error });
+//       });
+//   } catch (error) {
+//     res.send({ status: "error", message: "Invalid token" });
+//   }
+// };
 
 
   
@@ -528,9 +542,9 @@ module.exports = {
   form_create,
   create_product,
     sign_in,
-    get_product
-    
-    // forget_password,
+    // get_product,
+    get_userdetails,
+    forget_password,
   //   user_data,
   //   reset_password,
   //   signout,
